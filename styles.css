@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Zolya:wght@400&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -81,6 +83,7 @@ body {
     font-style: italic;
     letter-spacing: 2px;
     line-height: 1.2;
+    font-family: 'Zolya', cursive;
 }
 
 .subtitle {
@@ -89,6 +92,7 @@ body {
     font-weight: normal;
     font-style: italic;
     letter-spacing: 1px;
+    font-family: 'Zolya', cursive;
 }
 
 /* Content Section */
@@ -114,11 +118,17 @@ body {
     flex-wrap: wrap;
 }
 
-.date-box, .time-box {
+.date-box, .time-box, .date-time-wrapper {
     text-align: center;
 }
 
 .date-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.date-time-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
