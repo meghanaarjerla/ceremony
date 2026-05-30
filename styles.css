@@ -1,0 +1,339 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', 'Garamond', serif;
+    background: linear-gradient(135deg, #f5e6f3 0%, #e8dae8 50%, #f5e6f3 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(138, 43, 226, 0.15);
+    max-width: 800px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Floral Decorations */
+.floral-top, .floral-bottom {
+    height: 80px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.floral-top {
+    background: linear-gradient(180deg, rgba(200, 150, 220, 0.1) 0%, transparent 100%);
+    border-bottom: 2px solid rgba(138, 43, 226, 0.1);
+}
+
+.floral-top::after {
+    content: '✿ ❀ ✿ ❀ ✿ ❀ ✿';
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: #9370db;
+    font-size: 24px;
+    letter-spacing: 15px;
+}
+
+.floral-bottom {
+    background: linear-gradient(180deg, transparent 0%, rgba(200, 150, 220, 0.1) 100%);
+    border-top: 2px solid rgba(138, 43, 226, 0.1);
+}
+
+.floral-bottom::after {
+    content: '✿ ❀ ✿ ❀ ✿ ❀ ✿';
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: #9370db;
+    font-size: 24px;
+    letter-spacing: 15px;
+}
+
+/* Header Section */
+.header-section {
+    padding: 40px 30px;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(147, 112, 219, 0.05) 0%, rgba(216, 191, 216, 0.05) 100%);
+}
+
+.main-title {
+    font-size: 52px;
+    color: #6b5b7d;
+    font-weight: normal;
+    margin-bottom: 15px;
+    font-style: italic;
+    letter-spacing: 2px;
+    line-height: 1.2;
+}
+
+.subtitle {
+    font-size: 28px;
+    color: #8b7ba8;
+    font-weight: normal;
+    font-style: italic;
+    letter-spacing: 1px;
+}
+
+/* Content Section */
+.content-section {
+    padding: 40px 30px;
+}
+
+.invitation-text {
+    font-size: 18px;
+    color: #6b5b7d;
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+/* Event Details */
+.event-details {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.date-box, .time-box {
+    text-align: center;
+}
+
+.date-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.month {
+    font-size: 12px;
+    color: #8b7ba8;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.day {
+    font-size: 48px;
+    color: #6b5b7d;
+    font-weight: bold;
+    line-height: 1;
+    margin: 5px 0;
+}
+
+.year {
+    font-size: 12px;
+    color: #8b7ba8;
+    letter-spacing: 1px;
+}
+
+.time-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.day-of-week {
+    font-size: 12px;
+    color: #8b7ba8;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.time {
+    font-size: 14px;
+    color: #6b5b7d;
+    margin-top: 8px;
+    letter-spacing: 1px;
+}
+
+/* Countdown Section */
+.countdown-section {
+    background: linear-gradient(135deg, #f5e6f3 0%, #ede8f0 100%);
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.countdown-section h3 {
+    color: #6b5b7d;
+    font-size: 16px;
+    margin-bottom: 20px;
+    font-weight: normal;
+    letter-spacing: 1px;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    min-width: 70px;
+    box-shadow: 0 2px 8px rgba(138, 43, 226, 0.1);
+}
+
+.countdown-value {
+    font-size: 28px;
+    font-weight: bold;
+    color: #8a2be2;
+    line-height: 1;
+}
+
+.countdown-label {
+    font-size: 10px;
+    color: #8b7ba8;
+    margin-top: 5px;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+/* Venue Section */
+.venue-section {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: rgba(200, 150, 220, 0.05);
+    border-radius: 8px;
+}
+
+.venue-label {
+    font-size: 11px;
+    color: #8b7ba8;
+    letter-spacing: 2px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.venue-name {
+    font-size: 14px;
+    color: #6b5b7d;
+    font-weight: bold;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.venue-address {
+    font-size: 12px;
+    color: #8b7ba8;
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+}
+
+/* Buttons Section */
+.buttons-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.btn {
+    padding: 14px 30px;
+    font-size: 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    font-family: 'Arial', sans-serif;
+}
+
+.btn-venue {
+    background: linear-gradient(135deg, #8a2be2 0%, #9932cc 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
+}
+
+.btn-venue:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(138, 43, 226, 0.4);
+}
+
+.btn-save-date {
+    background: white;
+    color: #8a2be2;
+    border: 2px solid #8a2be2;
+}
+
+.btn-save-date:hover {
+    background: #f5e6f3;
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .main-title {
+        font-size: 38px;
+    }
+
+    .subtitle {
+        font-size: 22px;
+    }
+
+    .invitation-text {
+        font-size: 16px;
+    }
+
+    .day {
+        font-size: 38px;
+    }
+
+    .event-details {
+        gap: 20px;
+    }
+
+    .countdown {
+        gap: 10px;
+    }
+
+    .countdown-item {
+        min-width: 60px;
+        padding: 12px;
+    }
+
+    .countdown-value {
+        font-size: 22px;
+    }
+
+    .buttons-section {
+        gap: 12px;
+    }
+
+    .btn {
+        padding: 12px 20px;
+        font-size: 12px;
+    }
+}
