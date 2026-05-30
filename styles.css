@@ -80,7 +80,7 @@ body {
     color: #6b5b7d;
     font-weight: normal;
     margin-bottom: 15px;
-    font-style: italic;
+    font-style: zolya;
     letter-spacing: 2px;
     line-height: 1.2;
     font-family: 'Zolya', cursive;
@@ -90,7 +90,7 @@ body {
     font-size: 28px;
     color: #8b7ba8;
     font-weight: normal;
-    font-style: italic;
+    font-style: skyscript;
     letter-spacing: 1px;
     font-family: 'Zolya', cursive;
 }
