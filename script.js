@@ -37,8 +37,8 @@ function openGoogleMaps() {
     window.open(mapsUrl, '_blank');
 }
 
-// Save event to calendar (creates a downloadable .ics file)
-function saveToCalendar() {
+// Download calendar file with reminder
+function downloadCalendarFile() {
     const eventTitle = 'Seemantham Ceremony - Prabhasree & Bhanuchandar';
     const eventDate = '20260705';
     const eventTime = '100000';
@@ -61,6 +61,11 @@ DESCRIPTION:${eventDescription}
 LOCATION:${eventLocation}
 STATUS:CONFIRMED
 SEQUENCE:0
+BEGIN:VALARM
+TRIGGER:-PT24H
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Seemantham Ceremony - Prabhasree & Bhanuchandar
+END:VALARM
 END:VEVENT
 END:VCALENDAR`;
 
@@ -77,8 +82,101 @@ END:VCALENDAR`;
     link.click();
     document.body.removeChild(link);
     
-    // Show confirmation message
-    alert('Event saved! The .ics file has been downloaded. You can import it to your calendar application.');
+    closeModal();
+    alert('Event saved! The .ics file has been downloaded. You can import it to your calendar application (Google Calendar, Outlook, Apple Calendar, etc.).');
+}
+
+// Add Google Calendar reminder
+function addToGoogleCalendar() {
+    const eventTitle = encodeURIComponent('Seemantham Ceremony - Prabhasree & Bhanuchandar');
+    const eventDescription = encodeURIComponent('Join us to welcome our little one!');
+    const eventLocation = encodeURIComponent('VR Function Hall, Chanukya Nagar, Chinnamushidiwada, Pendurthi, Visakhapatnam');
+    
+    // Format: YYYYMMDDTHHMM00Z (UTC time, but we'll use local)
+    const startTime = '20260705T100000';
+    const endTime = '20260705T120000';
+    
+    const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&dates=${startTime}/${endTime}&details=${eventDescription}&location=${eventLocation}`;
+    
+    window.open(googleCalendarUrl, '_blank');
+    closeModal();
+}
+
+// Add to Outlook Calendar
+function addToOutlookCalendar() {
+    const eventTitle = encodeURIComponent('Seemantham Ceremony - Prabhasree & Bhanuchandar');
+    const eventDescription = encodeURIComponent('Join us to welcome our little one!');
+    const eventLocation = encodeURIComponent('VR Function Hall, Chanukya Nagar, Chinnamushidiwada, Pendurthi, Visakhapatnam');
+    
+    const outlookUrl = `https://outlook.office.com/calendar/0/deeplink/compose?subject=${eventTitle}&body=${eventDescription}&location=${eventLocation}&startTime=2026-07-05T10:00:00&endTime=2026-07-05T12:00:00`;
+    
+    window.open(outlookUrl, '_blank');
+    closeModal();
+}
+
+// Set local browser reminder with notification
+function setLocalReminder() {
+    if ('Notification' in window) {
+        Notification.requestPermission().then(permission => {
+            if (permission === 'granted') {
+                // Calculate milliseconds until event
+                const now = new Date().getTime();
+                const eventDateTime = new Date('2026-07-05T10:00:00').getTime();
+                const timeUntilEvent = eventDateTime - now;
+                
+                if (timeUntilEvent > 0) {
+                    // Set reminder for 24 hours before event
+                    const reminderTime = timeUntilEvent - (24 * 60 * 60 * 1000);
+                    
+                    if (reminderTime > 0) {
+                        setTimeout(() => {
+                            new Notification('Seemantham Ceremony Reminder! 🎉', {
+                                body: 'The event is coming up tomorrow at 10:00 AM. See you there!',
+                                icon: '📅',
+                                tag: 'ceremony-reminder',
+                                badge: '🎊'
+                            });
+                        }, reminderTime);
+                        
+                        alert('✅ Reminder set! You will receive a notification 24 hours before the event.');
+                    } else {
+                        alert('⏰ The event is happening soon! You won\'t receive an advance reminder.');
+                    }
+                }
+                closeModal();
+            } else if (permission === 'denied') {
+                alert('❌ Notification permission denied. Please enable notifications in your browser settings.');
+                closeModal();
+            }
+        });
+    } else {
+        alert('⚠️ Your browser does not support notifications.');
+        closeModal();
+    }
+}
+
+// Modal management
+function showSaveDateModal() {
+    const modal = document.getElementById('saveDateModal');
+    modal.style.display = 'flex';
+}
+
+function closeModal() {
+    const modal = document.getElementById('saveDateModal');
+    modal.style.display = 'none';
+}
+
+// Close modal when clicking outside of it
+window.addEventListener('click', function(event) {
+    const modal = document.getElementById('saveDateModal');
+    if (event.target === modal) {
+        closeModal();
+    }
+});
+
+// Save event to calendar - opens modal
+function saveToCalendar() {
+    showSaveDateModal();
 }
 
 // Initialize countdown on page load
