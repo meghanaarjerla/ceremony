@@ -82,7 +82,6 @@ END:VCALENDAR`;
     link.click();
     document.body.removeChild(link);
     
-    closeModal();
     alert('Event saved! The .ics file has been downloaded. You can import it to your calendar application (Google Calendar, Outlook, Apple Calendar, etc.).');
 }
 
@@ -99,10 +98,9 @@ function addToGoogleCalendar() {
     const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&dates=${startTime}/${endTime}&details=${eventDescription}&location=${eventLocation}`;
     
     window.open(googleCalendarUrl, '_blank');
-    closeModal();
 }
 
-// Add to Outlook Calendar
+// Add to Outlook Calendar with reminder
 function addToOutlookCalendar() {
     const eventTitle = encodeURIComponent('Seemantham Ceremony - Prabhasree & Bhanuchandar');
     const eventDescription = encodeURIComponent('Join us to welcome our little one!');
@@ -111,7 +109,6 @@ function addToOutlookCalendar() {
     const outlookUrl = `https://outlook.office.com/calendar/0/deeplink/compose?subject=${eventTitle}&body=${eventDescription}&location=${eventLocation}&startTime=2026-07-05T10:00:00&endTime=2026-07-05T12:00:00`;
     
     window.open(outlookUrl, '_blank');
-    closeModal();
 }
 
 // Set local browser reminder with notification
@@ -143,15 +140,12 @@ function setLocalReminder() {
                         alert('⏰ The event is happening soon! You won\'t receive an advance reminder.');
                     }
                 }
-                closeModal();
             } else if (permission === 'denied') {
                 alert('❌ Notification permission denied. Please enable notifications in your browser settings.');
-                closeModal();
             }
         });
     } else {
         alert('⚠️ Your browser does not support notifications.');
-        closeModal();
     }
 }
 
@@ -174,9 +168,13 @@ window.addEventListener('click', function(event) {
     }
 });
 
-// Save event to calendar - opens modal
+// Save event to calendar - navigates directly to Google Calendar and sets browser reminder
 function saveToCalendar() {
-    showSaveDateModal();
+    // Add to Google Calendar
+    addToGoogleCalendar();
+    
+    // Also set a local browser reminder
+    setLocalReminder();
 }
 
 // Initialize countdown on page load
