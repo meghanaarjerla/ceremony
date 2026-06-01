@@ -109,15 +109,92 @@ body {
     line-height: 1.6;
 }
 
-/* Event Details */
+/* Event Details - NEW LAYOUT */
 .event-details {
     display: flex;
     justify-content: center;
-    gap: 30px;
     margin-bottom: 40px;
-    flex-wrap: wrap;
 }
 
+.date-time-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+}
+
+.month-top {
+    font-size: 16px;
+    color: #8b7ba8;
+    letter-spacing: 3px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.date-time-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.date-time-main::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 80px;
+    height: 2px;
+    background: #6b5b7d;
+    transform: translateY(-50%);
+}
+
+.date-time-main::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 80px;
+    height: 2px;
+    background: #6b5b7d;
+    transform: translateY(-50%);
+}
+
+.day-of-week {
+    font-size: 14px;
+    color: #8b7ba8;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.large-day {
+    font-size: 72px;
+    color: #8a2be2;
+    font-weight: bold;
+    line-height: 1;
+    margin: 0 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.time {
+    font-size: 14px;
+    color: #8b7ba8;
+    letter-spacing: 1px;
+}
+
+.year-bottom {
+    font-size: 16px;
+    color: #8b7ba8;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+/* Keep old classes for compatibility */
 .date-box, .time-box, .date-time-wrapper {
     text-align: center;
 }
@@ -152,26 +229,6 @@ body {
 .year {
     font-size: 12px;
     color: #8b7ba8;
-    letter-spacing: 1px;
-}
-
-.time-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.day-of-week {
-    font-size: 12px;
-    color: #8b7ba8;
-    letter-spacing: 2px;
-    font-weight: bold;
-}
-
-.time {
-    font-size: 14px;
-    color: #6b5b7d;
-    margin-top: 8px;
     letter-spacing: 1px;
 }
 
@@ -447,8 +504,27 @@ body {
         font-size: 38px;
     }
 
-    .event-details {
-        gap: 20px;
+    .large-day {
+        font-size: 56px;
+    }
+
+    .date-time-main::before,
+    .date-time-main::after {
+        width: 50px;
+    }
+
+    .date-time-main {
+        gap: 15px;
+    }
+
+    .day-of-week,
+    .time {
+        font-size: 12px;
+    }
+
+    .month-top,
+    .year-bottom {
+        font-size: 14px;
     }
 
     .countdown {
