@@ -37,6 +37,21 @@ function openGoogleMaps() {
     window.open(mapsUrl, '_blank');
 }
 
+// Add Google Calendar event with reminder - directly navigate
+function addToGoogleCalendar() {
+    const eventTitle = encodeURIComponent('Seemantham Ceremony - Prabhasree & Bhanuchandar');
+    const eventDescription = encodeURIComponent('Join us to welcome our little one!\n\nVenue: VR Function Hall, Chanukya Nagar, Chinnamushidiwada, Pendurthi, Visakhapatnam\n\nEvent includes lunch at the venue.');
+    const eventLocation = encodeURIComponent('VR Function Hall, Chanukya Nagar, Chinnamushidiwada, Pendurthi, Visakhapatnam');
+    
+    // Format: YYYYMMDDTHHMM00Z (UTC time, but we'll use local)
+    const startTime = '20260705T100000';
+    const endTime = '20260705T120000';
+    
+    const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&dates=${startTime}/${endTime}&details=${eventDescription}&location=${eventLocation}`;
+    
+    window.open(googleCalendarUrl, '_blank');
+}
+
 // Download calendar file with reminder
 function downloadCalendarFile() {
     const eventTitle = 'Seemantham Ceremony - Prabhasree & Bhanuchandar';
@@ -82,22 +97,8 @@ END:VCALENDAR`;
     link.click();
     document.body.removeChild(link);
     
+    closeModal();
     alert('Event saved! The .ics file has been downloaded. You can import it to your calendar application (Google Calendar, Outlook, Apple Calendar, etc.).');
-}
-
-// Add Google Calendar reminder
-function addToGoogleCalendar() {
-    const eventTitle = encodeURIComponent('Seemantham Ceremony - Prabhasree & Bhanuchandar');
-    const eventDescription = encodeURIComponent('Join us to welcome our little one!');
-    const eventLocation = encodeURIComponent('VR Function Hall, Chanukya Nagar, Chinnamushidiwada, Pendurthi, Visakhapatnam');
-    
-    // Format: YYYYMMDDTHHMM00Z (UTC time, but we'll use local)
-    const startTime = '20260705T100000';
-    const endTime = '20260705T120000';
-    
-    const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&dates=${startTime}/${endTime}&details=${eventDescription}&location=${eventLocation}`;
-    
-    window.open(googleCalendarUrl, '_blank');
 }
 
 // Add to Outlook Calendar with reminder
@@ -109,6 +110,7 @@ function addToOutlookCalendar() {
     const outlookUrl = `https://outlook.office.com/calendar/0/deeplink/compose?subject=${eventTitle}&body=${eventDescription}&location=${eventLocation}&startTime=2026-07-05T10:00:00&endTime=2026-07-05T12:00:00`;
     
     window.open(outlookUrl, '_blank');
+    closeModal();
 }
 
 // Set local browser reminder with notification
@@ -168,13 +170,9 @@ window.addEventListener('click', function(event) {
     }
 });
 
-// Save event to calendar - navigates directly to Google Calendar and sets browser reminder
+// Save event to calendar - directly navigates to Google Calendar
 function saveToCalendar() {
-    // Add to Google Calendar
     addToGoogleCalendar();
-    
-    // Also set a local browser reminder
-    setLocalReminder();
 }
 
 // Initialize countdown on page load
