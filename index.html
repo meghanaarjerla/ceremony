@@ -73,6 +73,53 @@
         <div class="floral-bottom"></div>
     </div>
 
+    <!-- Save Date Modal -->
+    <div id="saveDateModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Save the Event</h2>
+                <span class="close" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p>Choose how you'd like to save the event and set a reminder:</p>
+                
+                <div class="modal-options">
+                    <button class="modal-btn" onclick="addToGoogleCalendar()">
+                        <span class="modal-icon">🔵</span>
+                        <span class="modal-text">
+                            <strong>Google Calendar</strong>
+                            <small>Add to your Google Calendar</small>
+                        </span>
+                    </button>
+                    
+                    <button class="modal-btn" onclick="addToOutlookCalendar()">
+                        <span class="modal-icon">📧</span>
+                        <span class="modal-text">
+                            <strong>Outlook Calendar</strong>
+                            <small>Add to your Outlook/Microsoft Calendar</small>
+                        </span>
+                    </button>
+                    
+                    <button class="modal-btn" onclick="downloadCalendarFile()">
+                        <span class="modal-icon">📥</span>
+                        <span class="modal-text">
+                            <strong>Download .ICS File</strong>
+                            <small>Import to any calendar app</small>
+                        </span>
+                    </button>
+                    
+                    <button class="modal-btn" onclick="setLocalReminder()">
+                        <span class="modal-icon">🔔</span>
+                        <span class="modal-text">
+                            <strong>Browser Reminder</strong>
+                            <small>Get a notification 24 hours before</small>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
